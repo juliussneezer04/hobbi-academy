@@ -1,3 +1,4 @@
+import DefaultLayout from "@/components/defaultLayout";
 import { Course } from "@/interfaces";
 import { getCourse } from "@/lib/firebase";
 import { GetServerSideProps } from "next";
@@ -18,13 +19,15 @@ interface CoursePageProps {
 
 export default function Course(props: CoursePageProps) {
   return (
-    <div>
-      <h1 className="text-4xl font-semibold">
-        Course {props.course.title}
-      </h1>
-      <div className="text-2xl font-medium">
-        {props.course.description}
+    <DefaultLayout>
+      <div>
+        <h1 className="text-4xl font-semibold">
+          Course {props.course.title}
+        </h1>
+        <div className="text-2xl font-medium">
+          {props.course.description}
+        </div>
       </div>
-    </div>
+    </DefaultLayout>
   );
 }
