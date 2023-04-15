@@ -14,9 +14,7 @@ export default function Home() {
       router.push("/dashboard");
     }
   }, [isAuthenticated, router]);
-  return isLoading ? (
-      <Loading />
-    ) : (
+  return (
     <div>
       <h1>Landing Page</h1>
       <LoginButton />

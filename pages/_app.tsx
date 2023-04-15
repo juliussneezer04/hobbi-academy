@@ -8,7 +8,7 @@ export default function App({ Component, pageProps }: AppProps) {
       domain={process.env.NEXT_PUBLIC_AUTH0_DOMAIN ?? ""}
       clientId={process.env.NEXT_PUBLIC_AUTH0_CLIENT_ID ?? ""}
       authorizationParams={{
-        redirect_uri: process.env.NEXT_PUBLIC_AUTH0_REDIRECT_URI ?? "",
+        redirect_uri: process.env.NEXT_PUBLIC_AUTH0_REDIRECT_URI ?? "http://localhost:3000/dashboard",
       }}
     >
       <Component {...pageProps} />
