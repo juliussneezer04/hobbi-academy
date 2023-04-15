@@ -1,18 +1,24 @@
-import { useAuth0 } from "@auth0/auth0-react"
+import { Auth0Provider, useAuth0 } from "@auth0/auth0-react"
 import { useRouter } from "next/router";
 import React, { useEffect } from "react"
 
 export default function AuthWrapper (props: {children: React.ReactNode }) {
-  const { isAuthenticated } = useAuth0()
+  const { isAuthenticated, isLoading } = useAuth0()
   const router = useRouter();
   useEffect(() => {
-    if (!isAuthenticated) {
+    if (!isLoading && !isAuthenticated) {
       router.push("/");
     }
-  }, [isAuthenticated, router])
+  }, [isAuthenticated, isLoading, router])
   return (
-    <>
+    <Auth0Provider
+      domain={process.env.NEXT_PUBLIC_AUTH0_DOMAIN ?? ""}
+      clientId={process.env.NEXT_PUBLIC_AUTH0_CLIENT_ID ?? ""}
+      authorizationParams={{
+        redirect_uri: process.env.NEXT_PUBLIC_AUTH0_REDIRECT_URI ?? "http://localhost:3000/dashboard",
+      }}
+    >
       {props.children}
-    </>
+    </Auth0Provider>
   )
 }
