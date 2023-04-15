@@ -9,7 +9,7 @@ export default function LogoutButton(props: LogoutButtonProps) {
   const { logout } = useAuth0();
   return <button className={props.className} onClick={() => logout({
     logoutParams: {
-      returnTo: process.env.NEXT_PUBLIC_AUTH0_HOME_URI ?? "http://localhost:3000/",
+      returnTo: process.env.AUTH0_BASE_URL ?? "http://localhost:3000/",
     },
   })}>Log Out</button>;
 }

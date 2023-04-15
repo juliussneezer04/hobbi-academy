@@ -12,8 +12,8 @@ export default function AuthWrapper (props: {children: React.ReactNode }) {
   }, [isAuthenticated, isLoading, router])
   return (
     <Auth0Provider
-      domain={process.env.NEXT_PUBLIC_AUTH0_DOMAIN ?? ""}
-      clientId={process.env.NEXT_PUBLIC_AUTH0_CLIENT_ID ?? ""}
+      domain={process.env.AUTH0_DOMAIN ?? ""}
+      clientId={process.env.AUTH0_CLIENT_ID ?? ""}
       authorizationParams={{
         redirect_uri: process.env.NEXT_PUBLIC_AUTH0_REDIRECT_URI ?? "http://localhost:3000/dashboard",
       }}

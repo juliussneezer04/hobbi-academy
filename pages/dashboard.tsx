@@ -1,11 +1,29 @@
+import CourseWeb from "@/components/courseWeb";
 import DefaultLayout from "@/components/defaultLayout";
-import React from "react";
+import { useAuth0 } from "@auth0/auth0-react";
+import React, { useEffect } from "react";
+import { getUserCourses } from "@/lib/firebase";
+import { Course } from "@/interfaces";
+  
 
 export default function Dashboard() {
+  const { user } = useAuth0();
+  const [userCourses, setUserCourses] = React.useState<Course[]>([]);
+
+  useEffect(() => {
+    if (user) {
+      const id = user.email ?? "";
+      const getUserCourseList = async () => {
+        const courses = await getUserCourses(id);
+        setUserCourses(courses);
+      }
+      getUserCourseList();
+    }
+  }, [user])
   return (
       <DefaultLayout>
-        <div>
-          <h1>Dashboard</h1>
+        <div className="flex flex-col items-center">
+          <CourseWeb userCourses={userCourses} />
         </div>
       </DefaultLayout>
   );
