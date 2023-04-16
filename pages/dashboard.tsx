@@ -7,6 +7,7 @@ import { useLocalStorage } from "@/lib/hooks/useUser";
 import { User } from "firebase/auth";
 import { RoomProvider } from "@/liveblocks.config";
 import LiveCursorWrapper from "@/components/liveCursorWrapper";
+import { LiveChatContextProvider } from "@/components/useLiveChatEnabled";
 
 export default function Dashboard() {
   const [userCourses, setUserCourses] = React.useState<Course[]>([]);
@@ -31,11 +32,13 @@ export default function Dashboard() {
           userId: user?.email ?? "",
         }}
       >
-        <LiveCursorWrapper>
-          <div className="flex flex-col items-center">
-            <CourseWeb userCourses={userCourses} />
-          </div>
-        </LiveCursorWrapper>
+        <LiveChatContextProvider>
+          <LiveCursorWrapper>
+            <div className="flex flex-col items-center">
+              <CourseWeb userCourses={userCourses} />
+            </div>
+          </LiveCursorWrapper>
+        </LiveChatContextProvider>
       </RoomProvider>
     </DefaultLayout>
   );
