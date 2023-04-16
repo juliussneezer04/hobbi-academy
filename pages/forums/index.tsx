@@ -1,5 +1,5 @@
 import DefaultLayout from "@/components/defaultLayout";
-import ForumCard from "@/components/forum/forumCard";
+import InfoCard from "@/components/infoCard";
 import { ForumDetails } from "@/interfaces";
 import { getUserForums } from "@/lib/firebase";
 import { useLocalStorage } from "@/lib/hooks/useUser";
@@ -25,7 +25,7 @@ export default function Forums() {
         <div className="flex flex-col space-y-4 w-[50%]">
           {
             forums.map((forum, idx) => (
-              <ForumCard key={idx} forum={forum} />
+              <InfoCard key={idx} info={forum.title} route={`/forums/${forum.id}`} />
             ))
           }
         </div>

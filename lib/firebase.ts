@@ -146,7 +146,7 @@ export const enrollInCourse = async (userId: string, courseId: string) => {
  */
 export async function getUserCourses(
   userId: string
-): Promise<Course[] | never[]> {
+): Promise<Course[]> {
   const userCoursesDocRef = doc(db, "users", userId);
   const userCourseDoc = await getDoc(userCoursesDocRef);
   if (userCourseDoc.exists()) {
