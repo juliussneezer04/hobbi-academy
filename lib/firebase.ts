@@ -14,6 +14,7 @@ import {
   collection,
   getDocs,
   updateDoc,
+  addDoc,
 } from "firebase/firestore";
 
 // Your web app's Firebase configuration
@@ -68,23 +69,12 @@ export async function createUser(
   } else {
     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
     localStorage.setItem("user", JSON.stringify(userCredential.user));
+    const collectionRef = collection(db, "users");
+    await addDoc(collectionRef, {
+      courses: [],
+    });
     return userCredential.user;
   }
-}
-
-export function getUser(): User | null {
-  const userString = localStorage.getItem("user");
-  if (userString) {
-    const user = JSON.parse(userString) as User;
-    return user;
-  } else {
-    return null;
-  }
-}
-
-export function isUserSignedIn(): boolean {
-  const userString = localStorage.getItem("user");
-  return !!userString;
 }
 
 // DB
