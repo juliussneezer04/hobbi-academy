@@ -7,7 +7,7 @@ import {
   Bars3Icon,
   CloudArrowUpIcon,
   FingerPrintIcon,
-  LockClosedIcon,
+  DocumentCheckIcon,
   XMarkIcon,
 } from "@heroicons/react/24/outline";
 import { CheckIcon } from "@heroicons/react/20/solid";
@@ -21,27 +21,27 @@ const navigation = [
 ];
 const features = [
   {
-    name: "Push to deploy",
+    name: "Expert Videos",
     description:
-      "Morbi viverra dui mi arcu sed. Tellus semper adipiscing suspendisse semper morbi. Odio urna massa nunc massa.",
+      "Hand-picked guides from the best in the industry.",
     icon: CloudArrowUpIcon,
   },
   {
-    name: "SSL certificates",
+    name: "Interactive Forums",
     description:
-      "Sit quis amet rutrum tellus ullamcorper ultricies libero dolor eget. Sem sodales gravida quam turpis enim lacus amet.",
-    icon: LockClosedIcon,
+      "Curated corners for discussion.",
+    icon: DocumentCheckIcon,
   },
   {
-    name: "Simple queues",
+    name: "Live Multiplayer",
     description:
-      "Quisque est vel vulputate cursus. Risus proin diam nunc commodo. Lobortis auctor congue commodo diam neque.",
+      "Bump into others with live avatars.",
     icon: ArrowPathIcon,
   },
   {
-    name: "Advanced security",
+    name: "Advanced Support",
     description:
-      "Arcu egestas dolor vel iaculis in ipsum mauris. Tincidunt mattis aliquet hac quis. Id hac maecenas ac donec pharetra eget.",
+      "Get help from our team of experts.",
     icon: FingerPrintIcon,
   },
 ];
@@ -245,22 +245,14 @@ export default function Example() {
                     </h1>
                   </span>
                   <p className="mt-6 text-lg leading-8 text-gray-600">
-                    Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure
-                    qui lorem cupidatat commodo. Elit sunt amet fugiat veniam
-                    occaecat fugiat aliqua.
+                    Re-imagining the way you learn 
                   </p>
                   <div className="mt-10 flex items-center justify-center gap-x-6">
                     <a
-                      href="#"
+                      href="/login"
                       className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                     >
                       Get started
-                    </a>
-                    <a
-                      href="#"
-                      className="text-sm font-semibold leading-6 text-gray-900"
-                    >
-                      Learn more <span aria-hidden="true">→</span>
                     </a>
                   </div>
                 </div>
@@ -292,7 +284,7 @@ export default function Example() {
           </div>
 
           {/* Logo cloud */}
-          <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          {/* <div className="mx-auto max-w-7xl px-6 lg:px-8">
             <div className="mx-auto grid max-w-lg grid-cols-4 items-center gap-x-8 gap-y-12 sm:max-w-xl sm:grid-cols-6 sm:gap-x-10 sm:gap-y-14 lg:mx-0 lg:max-w-none lg:grid-cols-5">
               <img
                 className="col-span-2 max-h-12 w-full object-contain lg:col-span-1"
@@ -342,21 +334,16 @@ export default function Example() {
                 </a>
               </p>
             </div>
-          </div>
+          </div> */}
 
           {/* Feature section */}
           <div className="mx-auto mt-32 max-w-7xl px-6 sm:mt-56 lg:px-8">
             <div className="mx-auto max-w-2xl lg:text-center">
               <h2 className="text-base font-semibold leading-7 text-indigo-600">
-                Deploy faster
+                Upskill faster
               </h2>
               <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-                Everything you need to deploy your app
-              </p>
-              <p className="mt-6 text-lg leading-8 text-gray-600">
-                Quis tellus eget adipiscing convallis sit sit eget aliquet quis.
-                Suspendisse eget egestas a elementum pulvinar et feugiat blandit
-                at. In mi viverra elit nunc.
+                Everything you need to pick up a new hobby!
               </p>
             </div>
             <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-4xl">
@@ -423,16 +410,12 @@ export default function Example() {
                 <figure>
                   <blockquote className="mt-6 text-lg font-semibold text-white sm:text-xl sm:leading-8">
                     <p>
-                      “Amet amet eget scelerisque tellus sit neque faucibus non
-                      eleifend. Integer eu praesent at a. Ornare arcu gravida
-                      natoque erat et cursus tortor consequat at. Vulputate
-                      gravida sociis enim nullam ultricies habitant malesuada
-                      lorem ac.”
+                      “Hobbi has made me realize that I have more talents than just eating and sleeping.”
                     </p>
                   </blockquote>
                   <figcaption className="mt-6 text-base text-white">
                     <div className="font-semibold">Judith Black</div>
-                    <div className="mt-1">CEO of Tuple</div>
+                    <div className="mt-1">Aspiring film-maker</div>
                   </figcaption>
                 </figure>
               </div>
@@ -440,7 +423,7 @@ export default function Example() {
           </div>
 
           {/* Pricing section */}
-          <div className="py-24 sm:pt-48">
+          {/* <div className="py-24 sm:pt-48">
             <div className="mx-auto max-w-7xl px-6 lg:px-8">
               <div className="mx-auto max-w-4xl text-center">
                 <h2 className="text-base font-semibold leading-7 text-indigo-600">
@@ -529,10 +512,10 @@ export default function Example() {
                 ))}
               </div>
             </div>
-          </div>
+          </div> */}
 
           {/* FAQs */}
-          <div className="mx-auto max-w-2xl divide-y divide-gray-900/10 px-6 pb-8 sm:pb-24 sm:pt-12 lg:max-w-7xl lg:px-8 lg:pb-32">
+          {/* <div className="mx-auto max-w-2xl divide-y divide-gray-900/10 px-6 pb-8 sm:pb-24 sm:pt-12 lg:max-w-7xl lg:px-8 lg:pb-32">
             <h2 className="text-2xl font-bold leading-10 tracking-tight text-gray-900">
               Frequently asked questions
             </h2>
@@ -553,7 +536,7 @@ export default function Example() {
                 </div>
               ))}
             </dl>
-          </div>
+          </div> */}
 
           {/* CTA section */}
           <div className="relative -z-10 mt-32 px-6 lg:px-8">
@@ -575,22 +558,12 @@ export default function Example() {
                 <br />
                 Start using our app today.
               </h2>
-              <p className="mx-auto mt-6 max-w-xl text-lg leading-8 text-gray-600">
-                Incididunt sint fugiat pariatur cupidatat consectetur sit cillum
-                anim id veniam aliqua proident excepteur commodo do ea.
-              </p>
               <div className="mt-10 flex items-center justify-center gap-x-6">
                 <a
-                  href="#"
+                  href="/login"
                   className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                 >
                   Get started
-                </a>
-                <a
-                  href="#"
-                  className="text-sm font-semibold leading-6 text-gray-900"
-                >
-                  Learn more <span aria-hidden="true">→</span>
                 </a>
               </div>
             </div>
@@ -620,84 +593,10 @@ export default function Example() {
             </h2>
             <div className="xl:grid xl:grid-cols-3 xl:gap-8">
               <img
-                className="h-7"
-                src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+                className="h-14"
+                src="/hobbiLogo.png"
                 alt="Company name"
               />
-              <div className="mt-16 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0">
-                <div className="md:grid md:grid-cols-2 md:gap-8">
-                  <div>
-                    <h3 className="text-sm font-semibold leading-6 text-gray-900">
-                      Solutions
-                    </h3>
-                    <ul role="list" className="mt-6 space-y-4">
-                      {footerNavigation.solutions.map((item) => (
-                        <li key={item.name}>
-                          <a
-                            href={item.href}
-                            className="text-sm leading-6 text-gray-600 hover:text-gray-900"
-                          >
-                            {item.name}
-                          </a>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div className="mt-10 md:mt-0">
-                    <h3 className="text-sm font-semibold leading-6 text-gray-900">
-                      Support
-                    </h3>
-                    <ul role="list" className="mt-6 space-y-4">
-                      {footerNavigation.support.map((item) => (
-                        <li key={item.name}>
-                          <a
-                            href={item.href}
-                            className="text-sm leading-6 text-gray-600 hover:text-gray-900"
-                          >
-                            {item.name}
-                          </a>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-                <div className="md:grid md:grid-cols-2 md:gap-8">
-                  <div>
-                    <h3 className="text-sm font-semibold leading-6 text-gray-900">
-                      Company
-                    </h3>
-                    <ul role="list" className="mt-6 space-y-4">
-                      {footerNavigation.company.map((item) => (
-                        <li key={item.name}>
-                          <a
-                            href={item.href}
-                            className="text-sm leading-6 text-gray-600 hover:text-gray-900"
-                          >
-                            {item.name}
-                          </a>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div className="mt-10 md:mt-0">
-                    <h3 className="text-sm font-semibold leading-6 text-gray-900">
-                      Legal
-                    </h3>
-                    <ul role="list" className="mt-6 space-y-4">
-                      {footerNavigation.legal.map((item) => (
-                        <li key={item.name}>
-                          <a
-                            href={item.href}
-                            className="text-sm leading-6 text-gray-600 hover:text-gray-900"
-                          >
-                            {item.name}
-                          </a>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              </div>
             </div>
           </footer>
         </div>

@@ -11,7 +11,7 @@ import FloatingParticles from "./courseWeb/floatingParticles";
 * This is the default layout for all pages.
 * Contains a drawer on the left of all pages
 */
-export default function DefaultLayout({ children }: { children: React.ReactNode}) {
+export default function DefaultLayout({ children, disableParticles }: { children: React.ReactNode; disableParticles?: boolean }) {
   const router = useRouter();
   const navigation = [
     { name: "Dashboard", href: "/dashboard", icon: MapIcon, current: router.pathname === "/dashboard" },

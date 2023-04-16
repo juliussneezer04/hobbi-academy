@@ -4,10 +4,12 @@ export enum CourseCategory {
   CRAFTS_AND_DIY = "Crafts & DIY",
 }
 
-export const COURSE_CATEGORY_TO_COLOR = {
-  [CourseCategory.BUILD_YOUR_OWN]: "red",
-  [CourseCategory.TEXTILE_ARTS]: "blue",
-  [CourseCategory.CRAFTS_AND_DIY]: "green",
+export const COURSE_CATEGORY_TO_COLOR: {
+  [key in CourseCategory]: string;
+} = {
+  [CourseCategory.BUILD_YOUR_OWN]: "#FF0000",
+  [CourseCategory.TEXTILE_ARTS]: "#008000",
+  [CourseCategory.CRAFTS_AND_DIY]: "#40E0D0",
 };
 
 
