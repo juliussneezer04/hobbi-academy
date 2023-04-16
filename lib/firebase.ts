@@ -99,6 +99,16 @@ export async function getCourse(courseId: string): Promise<Course | null> {
   }
 }
 
+export async function getAllCourses(): Promise<Course[]> {
+  const coursesCollectionRef = collection(db, "courses");
+  const coursesCollectionSnapshot = await getDocs(coursesCollectionRef);
+  const courses = coursesCollectionSnapshot.docs.map((doc) => {
+    const data = doc.data() as Course;
+    return data;
+  });
+  return courses;
+}
+
 export async function getCourses(
   courseIds: string[]
 ): Promise<Course[] | never[]> {
