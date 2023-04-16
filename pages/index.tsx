@@ -335,10 +335,10 @@ export default function Example() {
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
             <div className="mx-auto max-w-2xl lg:text-center">
               <h2 className="text-base font-semibold leading-7 text-indigo-600">
-                Deploy faster
+                Picking up a hobby
               </h2>
               <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-                Everything you need to deploy your app
+                Everything you need to start your hobby experience
               </p>
             </div>
             <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
@@ -420,7 +420,7 @@ export default function Example() {
               <div className="mx-auto max-w-4xl text-center">
                 <h2 className="text-base font-semibold leading-7 text-indigo-600">
                   Pricing
-                </h2>
+                </h2Full-time Knitter>
                 <p className="mt-2 text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
                   Pricing plans for teams of&nbsp;all&nbsp;sizes
                 </p>
