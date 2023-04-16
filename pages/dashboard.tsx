@@ -54,14 +54,15 @@ export default function Dashboard(props: { allCourses: Course[] }) {
   }, [user]);
 
   const courseNodes: Node[] = props.allCourses.map((course, idx) => {
-    const userColor = !!(userCourses.find(c => course.forumId === c.forumId))
+    const isUserCourse = !!(userCourses.find(c => course.forumId === c.forumId));
+    const userColor = isUserCourse
     ? COURSE_CATEGORY_TO_COLOR[course.category as CourseCategory]
     : "#808080";
     return {
       id: course.forumId,
       type: "input",
       data: {
-        label: <button className="animate-pulse" onClick={() => router.push(`/courses/course${course.forumId.slice(-1)}`)}>{course.title}</button>,
+        label: isUserCourse ? <button className="animate-pulse" onClick={() => router.push(`/courses/course${course.forumId.slice(-1)}`)}>{course.title}</button> : course.title,
       },
       style: {
         color: "white",
