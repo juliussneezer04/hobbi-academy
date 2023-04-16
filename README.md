@@ -1,6 +1,6 @@
 <img src="https://user-images.githubusercontent.com/68603272/232300846-d59215a3-fbf5-4a42-b2dd-300de0ca859a.gif" />
 
-# 🎉 Introducing Hobbi: 
+# 🎉 Introducing [Hobbi Academy](https://www.hobbiacademy.tech): 
 ## Your One-Stop Platform to Pick Up Hobbies Conveniently 🎉!
 
 *🌟 Discover, learn, and enjoy hobbies in an enriching and fulfilling way without the hassle. 🌟*
