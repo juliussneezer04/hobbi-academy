@@ -23,6 +23,6 @@ export const LiveChatContextProvider = ({ children }: { children: React.ReactNod
 );
 
 export const useLiveChatEnabled = () =>
-  useContext(LiveChatContext as Context<any>).liveChatEnabled;
+  useContext(LiveChatContext as Context<any>)?.liveChatEnabled;
 export const useToggleLiveChatEnabled = () =>
-  useContext(LiveChatContext as Context<any>).toggleLiveChatEnabled;
+  useContext(LiveChatContext as Context<any>)?.toggleLiveChatEnabled;

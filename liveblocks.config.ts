@@ -3,7 +3,7 @@ import { createRoomContext } from "@liveblocks/react";
 import { Event } from "./interfaces";
 
 const client = createClient({
-  publicApiKey: process.env.LIVEBLOCKS_PUBLIC_API_KEY || "",
+  publicApiKey: process.env.NEXT_PUBLIC_LIVEBLOCKS_KEY || "",
 });
 
 type Presence = {

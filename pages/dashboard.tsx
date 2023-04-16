@@ -5,18 +5,12 @@ import { getUserCourses } from "@/lib/firebase";
 import { Course } from "@/interfaces";
 import { useLocalStorage } from "@/lib/hooks/useUser";
 import { User } from "firebase/auth";
-import {
-  RoomProvider,
-  useOthers,
-  useUpdateMyPresence,
-} from "@/liveblocks.config";
-import Cursor from "@/components/cursorComponent";
+import { RoomProvider } from "@/liveblocks.config";
+import LiveCursorWrapper from "@/components/liveCursorWrapper";
 
 export default function Dashboard() {
   const [userCourses, setUserCourses] = React.useState<Course[]>([]);
   const [user, setUser] = useLocalStorage<User | null>("user", null);
-  const others = useOthers();
-  const updateMyPresence = useUpdateMyPresence();
   useEffect(() => {
     if (user) {
       const id = user.email ?? "";
@@ -37,30 +31,11 @@ export default function Dashboard() {
           userId: user?.email ?? "",
         }}
       >
-        <div
-          className="flex flex-col items-center"
-          onPointerMove={(e) =>
-            updateMyPresence({
-              cursor: {
-                x: e.clientX,
-                y: e.clientY,
-              },
-            })
-          }
-          onPointerLeave={() => updateMyPresence({ cursor: null })}
-        >
-          {others.map(({ connectionId, presence }) =>
-            presence.cursor ? (
-              <Cursor   
-                key={connectionId}
-                x={presence.cursor.x}
-                y={presence.cursor.y}
-                color={""}              
-              />
-            ) : null
-          )}
-          <CourseWeb userCourses={userCourses} />
-        </div>
+        <LiveCursorWrapper>
+          <div className="flex flex-col items-center">
+            <CourseWeb userCourses={userCourses} />
+          </div>
+        </LiveCursorWrapper>
       </RoomProvider>
     </DefaultLayout>
   );
