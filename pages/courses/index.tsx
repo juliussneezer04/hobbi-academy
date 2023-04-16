@@ -27,7 +27,7 @@ export default function Courses() {
               key={idx}
               info={course.title}
               subtitle={course.description}
-              route={`/courses/${course.id}`}
+              route={`/courses/course${course.forumId.slice(-1)}`}
             />
           ))}
         </div>
