@@ -5,7 +5,7 @@ import { GetServerSideProps } from "next";
 import React from "react";
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
-  const course = await getCourse(ctx.query.courseId as string);
+  const course = await getCourse(ctx.query.coursesId as string);
   return {
     props: {
       course,
