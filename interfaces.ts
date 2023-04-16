@@ -1,6 +1,7 @@
 import { CourseCategory } from "./constants";
 
 export interface Course {
+  id: string;
   category: CourseCategory;
   title: string;
   description: string;

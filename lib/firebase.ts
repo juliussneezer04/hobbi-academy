@@ -42,7 +42,7 @@ export async function getCourses(courseIds: string[]): Promise<Course[] | never[
     const courseDocRef = doc(db, "courses", courseId);
     const courseDoc = await getDoc(courseDocRef);
     if (courseDoc.exists()) {
-      const data = courseDoc.data() as Course;
+      const data = { ...courseDoc.data() as Course, id: courseId };
       return data;
     } else {
       return null;

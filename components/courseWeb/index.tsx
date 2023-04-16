@@ -27,9 +27,9 @@ export default function CourseWeb(props: CourseWebProps) {
               courseVideoName: "car-modeling.mp4",
             },
           ]
-        ).map((course, idx) => (
-          <WebBubble key={idx} course={course} />
-        ))}
+        ).map((course, idx) => {
+          return <WebBubble key={idx} course={course} />
+        })}
       </div>
     </>
   );

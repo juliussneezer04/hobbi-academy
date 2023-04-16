@@ -9,7 +9,7 @@ interface WebBubbleProps {
 }
 
 export default function WebBubble(props: WebBubbleProps) {
-  const { course } = props;
+  const { course} = props;
   const router = useRouter();
   const bubbleColorClassName = COURSE_CATEGORY_TO_COLOR[course.category]
   return (
