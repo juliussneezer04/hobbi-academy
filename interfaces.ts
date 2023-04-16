@@ -6,6 +6,7 @@ export interface Course {
   title: string;
   description: string;
   courseVideoName: string;
+  forumId: string;
 }
 
 export interface CourseUser {
@@ -14,10 +15,13 @@ export interface CourseUser {
   courses: string[];
 }
 
-export interface ForumMessage {
-  forumId: string;
+export interface ForumDetails {
   id: string;
-  message: string;
-  authorId: string;
-  timestamp: Date;
+  title: string;
+  messages: ForumMessage[];
+}
+
+export interface ForumMessage {
+  content: string;
+  author: string;
 }

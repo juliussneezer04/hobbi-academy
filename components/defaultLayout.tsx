@@ -4,6 +4,7 @@ import { Transition, Dialog } from "@headlessui/react";
 import { XMarkIcon, MapIcon, Bars3Icon, BookOpenIcon, ClipboardDocumentListIcon } from "@heroicons/react/24/outline";
 import { useRouter } from "next/router";
 import AuthWrapper from "./auth";
+import FloatingParticles from "./courseWeb/floatingParticles";
 
 
 /*
@@ -125,6 +126,7 @@ export default function DefaultLayout({ children }: { children: React.ReactNode}
         </div>
 
         <main className="py-10">
+          <FloatingParticles />
           <div className="px-4 sm:px-6 lg:px-8">{children}</div>
         </main>
       </div>
