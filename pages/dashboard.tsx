@@ -42,7 +42,7 @@ export default function Dashboard(props: { allCourses: Course[] }) {
   const [userCourses, setUserCourses] = React.useState<Course[]>([]);
   const [user, setUser] = useLocalStorage<User | null>("user", null);
   const [show, setShow] = React.useState(true);
-  const message = getRandomArbitrary(0, 1) > 0 ? "Click Shift + 'E' to send emojis 🔥" : "Click '/' to send messages 📝";
+  const message = "Click '/' for Messages 📝 or Shift + 'E' to send emojis 🔥";
   const router = useRouter();
   useEffect(() => {
     if (user) {
