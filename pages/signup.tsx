@@ -1,8 +1,9 @@
-import { loginUser } from "@/lib/firebase";
+import { createUser } from "@/lib/firebase";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
-export default function Login() {
+
+export default function Signup() {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const router = useRouter();
@@ -17,7 +18,10 @@ export default function Login() {
             alt="Your Company"
           />
           <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">
-            Sign in to your account
+            Sign up for Hobbi Academy!
+          </h2>
+          <h2 className="text-center text-base tracking-tight text-gray-900">
+            It&apos;s free!
           </h2>
         </div>
 
@@ -36,6 +40,7 @@ export default function Login() {
                   name="email"
                   type="email"
                   autoComplete="email"
+                  placeholder="michael@hobbi.com"
                   required
                   onChange={(e) => setEmail(e.target.value)}
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -67,23 +72,25 @@ export default function Login() {
               <button
                 onClick={async () => {
                   try {
-                    const user = await loginUser(email, password);
+                    await createUser(email, password);
                     router.push("/dashboard");
                   } catch (e) {
                     const err = e as Error;
-                    if (err.message === "Firebase: Error (auth/user-not-found).") {
+                    if (
+                      err.message === "Firebase: Error (auth/user-not-found)."
+                    ) {
                       alert("User not found");
                     }
                   }
                 }}
                 className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               >
-                Sign in
+                Sign up
               </button>
             </div>
             <div className="flex flex-col items-center">
               <Link href="/signup">
-                <u>or, Sign up</u>
+                <u>Already have an account?</u>
               </Link>
             </div>
           </div>
