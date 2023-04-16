@@ -15,6 +15,12 @@ import {
   getDocs,
   updateDoc,
   addDoc,
+  orderBy,
+  query,
+  onSnapshot,
+  QuerySnapshot,
+  DocumentData,
+  Unsubscribe,
 } from "firebase/firestore";
 
 // Your web app's Firebase configuration
@@ -67,7 +73,11 @@ export async function createUser(
     const user = JSON.parse(userString) as User;
     return user;
   } else {
-    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+    const userCredential = await createUserWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
     localStorage.setItem("user", JSON.stringify(userCredential.user));
     const collectionRef = collection(db, "users");
     await addDoc(collectionRef, {
@@ -148,9 +158,27 @@ export async function getUserCourses(
   }
 }
 
-export async function getForumMessages(
-  forumId: string
-): Promise<ForumDetails> {
+export async function getUserForums(userId: string) {
+  const courses = await getUserCourses(userId);
+  if (!courses) {
+    return [];
+  }
+  const forumIds = courses.map((course) => course.forumId);
+  const forums = await Promise.allSettled(
+    forumIds.map((forumId) => {
+      return getForumMessages(forumId);
+    })
+  ).then(
+    (results) =>
+      results
+        .map((result) => (result.status === "fulfilled" ? result.value : null))
+        .filter((forum) => forum !== null) as ForumDetails[]
+  );
+
+  return forums;
+}
+
+export async function getForumMessages(forumId: string): Promise<ForumDetails> {
   const forumDetailsDocRef = doc(db, "forums", forumId);
   const forumDetailsDocsSnapshot = await getDoc(forumDetailsDocRef);
   const forumDetails = forumDetailsDocsSnapshot.data() as { title: string };
@@ -171,4 +199,22 @@ export async function getForumMessages(
     id: forumId,
     messages,
   };
+}
+
+export function subscribeToForum(
+  forumId: string,
+  callbackFn: (snapshot: QuerySnapshot<DocumentData>) => void
+): Unsubscribe {
+  const q = query(collection(db, "forums", forumId, "messages"));
+  return onSnapshot(q, callbackFn);
+}
+
+export async function addForumMessage(forumId: string, message: ForumMessage) {
+  const forumMessagesDocsSnapshot = collection(
+    db,
+    "forums",
+    forumId,
+    "messages"
+  );
+  await addDoc(forumMessagesDocsSnapshot, message);
 }

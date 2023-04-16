@@ -22,8 +22,6 @@ export interface ForumDetails {
 }
 
 export interface ForumMessage {
-  id: string;
-  forumId: string;
   content: string;
   author: string;
 }

@@ -11,7 +11,6 @@ export default function CourseWeb(props: CourseWebProps) {
   const { userCourses } = props;
   return (
     <>
-      <FloatingParticles />
       <div className="flex flex-col items-center">
         <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
           Your Journey
