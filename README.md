@@ -1,8 +1,11 @@
-# 🎉 Introducing Hobbi: Your One-Stop Platform to Pick Up Hobbies Conveniently 🎉
+<img src="https://user-images.githubusercontent.com/68603272/232300846-d59215a3-fbf5-4a42-b2dd-300de0ca859a.gif" />
+
+# 🎉 Introducing Hobbi: 
+## Your One-Stop Platform to Pick Up Hobbies Conveniently 🎉!
 
 *🌟 Discover, learn, and enjoy hobbies in an enriching and fulfilling way without the hassle. 🌟*
 
-😩 **Tired of the outdated and inefficient way of picking up hobbies?*
+😩 **Tired of the outdated and inefficient way of picking up hobbies?** <br />
 We've got you covered with Hobbi, the ultimate platform for busy working adults seeking convenience and efficiency.
 
 ## 🏆 Why Hobbi? 🏆
