@@ -9,13 +9,14 @@ import { Course } from "@/interfaces";
 export default function Dashboard() {
   const { user } = useAuth0();
   const [userCourses, setUserCourses] = React.useState<Course[]>([]);
-
+  console.log("USER", user);
   useEffect(() => {
     if (user) {
       const id = user.email ?? "";
       const getUserCourseList = async () => {
         const courses = await getUserCourses(id);
         setUserCourses(courses);
+        console.log("courses", courses);
       }
       getUserCourseList();
     }

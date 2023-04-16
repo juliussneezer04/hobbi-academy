@@ -1,5 +1,5 @@
 export enum CourseCategory {
-  HANDS_ON = "Hands-on",
+  HANDS_ON = "hands-on",
 }
 
 export const COURSE_CATEGORY_TO_COLOR = {

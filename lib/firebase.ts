@@ -2,12 +2,12 @@ import { Course, ForumMessage } from "@/interfaces";
 import { initializeApp } from "firebase/app";
 import {
   getFirestore,
-  query,
-  where,
+  arrayUnion,
   getDoc,
   doc,
   collection,
-  getDocs
+  getDocs,
+  updateDoc
 } from "firebase/firestore"; 
 
 // Your web app's Firebase configuration
@@ -37,15 +37,53 @@ export async function getCourse(courseId: string): Promise<Course | null> {
   }
 }
 
-export async function getUserCourses(userId: string): Promise<Course[]> {
-  const courseQuery = query(collection(db, "courses"), where("usersEnrolled", "array-contains", userId));
-  const courseDocsSnapshot = await getDocs(courseQuery);
-  const courses: Course[] = [];
-  courseDocsSnapshot.forEach((doc) => {
-    const data = doc.data() as Course;
-    courses.push(data);
+export async function getCourses(courseIds: string[]): Promise<Course[] | never[]> {
+  const results = await Promise.allSettled(courseIds.map(async (courseId) => {
+    const courseDocRef = doc(db, "courses", courseId);
+    const courseDoc = await getDoc(courseDocRef);
+    if (courseDoc.exists()) {
+      const data = courseDoc.data() as Course;
+      return data;
+    } else {
+      return null;
+    }
+  })).then((results) => {
+    return results.map((result) => {
+      if (result.status === "fulfilled") {
+        const course = result.value as Course;
+        return course;
+      } else {
+        return null;
+      }
+    }).filter(course => course && course !== null) as Course[];
+  }).catch((error) => {
+    console.error(error);
+    return [];
   });
-  return courses;
+
+  return results;
+}
+
+export const enrollInCourse = async (userId: string, courseId: string) => {
+  const userCoursesDocRef = doc(db, "users", userId);
+  await updateDoc(userCoursesDocRef, {
+    courses: arrayUnion(courseId),
+  });
+}
+
+/**
+ * Returns courses that the user is enrolled in.
+ */
+export async function getUserCourses(userId: string): Promise<Course[] | never[]> {
+  const userCoursesDocRef = doc(db, "users", userId);
+  const userCourseDoc = await getDoc(userCoursesDocRef);
+  if (userCourseDoc.exists()) {
+    const courseIds = userCourseDoc.data() as string[];
+    const courses = await getCourses(courseIds);
+    return courses;
+  } else {
+    return [];
+  }
 }
 
 export async function getForumMessages(forumId: string): Promise<ForumMessage[]> {
