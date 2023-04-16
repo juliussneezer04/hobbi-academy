@@ -118,7 +118,7 @@ export default function DefaultLayout({ children }: { children: React.ReactNode}
             <Bars3Icon className="h-6 w-6" aria-hidden="true" />
           </button>
           <div className="flex-1 text-sm font-semibold leading-6 text-gray-900">{navigation.find(nav => nav.current)?.name}</div>
-          <a href="#">
+          <a href="#" className="hidden">
             <span className="sr-only">Your profile</span>
             <img
               className="h-8 w-8 rounded-full bg-gray-50"
