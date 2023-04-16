@@ -41,6 +41,8 @@ const IDX_TO_POSITION: {
 export default function Dashboard(props: { allCourses: Course[] }) {
   const [userCourses, setUserCourses] = React.useState<Course[]>([]);
   const [user, setUser] = useLocalStorage<User | null>("user", null);
+  const [show, setShow] = React.useState(true);
+  const message = getRandomArbitrary(0, 1) > 0 ? "Click Shift + 'E' to send emojis 🔥" : "Click '/' to send messages 📝";
   const router = useRouter();
   useEffect(() => {
     if (user) {
@@ -52,6 +54,12 @@ export default function Dashboard(props: { allCourses: Course[] }) {
       getUserCourseList();
     }
   }, [user]);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setShow(false);
+    }, 5000);
+  }, []);
 
   const courseNodes: Node[] = props.allCourses.map((course, idx) => {
     const isUserCourse = !!(userCourses.find(c => course.forumId === c.forumId));
@@ -87,6 +95,11 @@ export default function Dashboard(props: { allCourses: Course[] }) {
             <div className="flex flex-col items-center">
               <CourseWeb courseNodes={courseNodes}/>
             </div>
+            {show && <div className="fixed bottom-0 left-0 p-4 animate-bounce">
+              <button className="bg-gray-500 p-4 font-normal text-white rounded-md border-black">
+                {message}      
+              </button>
+            </div>}
           </LiveCursorWrapper>
         </LiveChatContextProvider>
       </RoomProvider>
