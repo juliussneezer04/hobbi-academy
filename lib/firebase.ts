@@ -140,7 +140,7 @@ export async function getUserCourses(
   const userCoursesDocRef = doc(db, "users", userId);
   const userCourseDoc = await getDoc(userCoursesDocRef);
   if (userCourseDoc.exists()) {
-    const courseIds = userCourseDoc.data() as string[];
+    const courseIds = userCourseDoc.data().courses as string[];
     const courses = await getCourses(courseIds);
     return courses;
   } else {
