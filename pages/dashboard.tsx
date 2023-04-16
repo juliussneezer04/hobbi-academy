@@ -41,6 +41,8 @@ const IDX_TO_POSITION: {
 export default function Dashboard(props: { allCourses: Course[] }) {
   const [userCourses, setUserCourses] = React.useState<Course[]>([]);
   const [user, setUser] = useLocalStorage<User | null>("user", null);
+  const [show, setShow] = React.useState(true);
+  const message = "Click '/' for Messages 📝 or Shift + 'E' to send emojis 🔥";
   const router = useRouter();
   useEffect(() => {
     if (user) {
@@ -53,15 +55,22 @@ export default function Dashboard(props: { allCourses: Course[] }) {
     }
   }, [user]);
 
+  useEffect(() => {
+    setTimeout(() => {
+      setShow(false);
+    }, 5000);
+  }, []);
+
   const courseNodes: Node[] = props.allCourses.map((course, idx) => {
-    const userColor = !!(userCourses.find(c => course.forumId === c.forumId))
+    const isUserCourse = !!(userCourses.find(c => course.forumId === c.forumId));
+    const userColor = isUserCourse
     ? COURSE_CATEGORY_TO_COLOR[course.category as CourseCategory]
     : "#808080";
     return {
       id: course.forumId,
       type: "input",
       data: {
-        label: <button className="animate-pulse" onClick={() => router.push(`/courses/course${course.forumId.slice(-1)}`)}>{course.title}</button>,
+        label: isUserCourse ? <button className="animate-pulse" onClick={() => router.push(`/courses/course${course.forumId.slice(-1)}`)}>{course.title}</button> : course.title,
       },
       style: {
         color: "white",
@@ -86,6 +95,11 @@ export default function Dashboard(props: { allCourses: Course[] }) {
             <div className="flex flex-col items-center">
               <CourseWeb courseNodes={courseNodes}/>
             </div>
+            {show && <div className="fixed bottom-0 left-0 p-4 animate-bounce">
+              <button className="bg-gray-500 p-4 font-normal text-white rounded-md border-black">
+                {message}      
+              </button>
+            </div>}
           </LiveCursorWrapper>
         </LiveChatContextProvider>
       </RoomProvider>

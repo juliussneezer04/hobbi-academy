@@ -35,14 +35,11 @@ export default function Course(props: CoursePageProps) {
             />
           )}
         </div>
-        <div className="text-sm font-normal hover:underline">
-          <span>
-            Need help?{" "}
+        <button className="text-sm p-4 rounded-md w-[20%] font-normal hover:underline bg-blue-600 text-white">
             <Link href={`/forums/${props.course.forumId}.mp4`}>
-              Check out the forum
+              Go to the private forum 📰
             </Link>
-          </span>
-        </div>
+        </button>
       </div>
     </DefaultLayout>
   );
