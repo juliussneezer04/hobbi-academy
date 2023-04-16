@@ -1,14 +1,20 @@
 import { Course, ForumMessage } from "@/interfaces";
 import { initializeApp } from "firebase/app";
 import {
+  User,
+  getAuth,
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+} from "firebase/auth";
+import {
   getFirestore,
   arrayUnion,
   getDoc,
   doc,
   collection,
   getDocs,
-  updateDoc
-} from "firebase/firestore"; 
+  updateDoc,
+} from "firebase/firestore";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -26,6 +32,62 @@ const app = initializeApp(firebaseConfig);
 // Initialize Cloud Firestore and get a reference to the service
 const db = getFirestore(app);
 
+// Initialize Firebase Auth
+const auth = getAuth(app);
+
+// Auth
+export async function loginUser(
+  email: string,
+  password: string
+): Promise<User> {
+  // Check if user exists
+  const userString = localStorage.getItem("user");
+  if (userString) {
+    const user = JSON.parse(userString) as User;
+    return user;
+  } else {
+    const userCredential = await signInWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
+    localStorage.setItem("user", JSON.stringify(userCredential.user));
+    return userCredential.user;
+  }
+}
+
+export async function createUser(
+  email: string,
+  password: string
+): Promise<User> {
+  // Check if user exists
+  const userString = localStorage.getItem("user");
+  if (userString) {
+    const user = JSON.parse(userString) as User;
+    return user;
+  } else {
+    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+    localStorage.setItem("user", JSON.stringify(userCredential.user));
+    return userCredential.user;
+  }
+}
+
+export function getUser(): User | null {
+  const userString = localStorage.getItem("user");
+  if (userString) {
+    const user = JSON.parse(userString) as User;
+    return user;
+  } else {
+    return null;
+  }
+}
+
+export function isUserSignedIn(): boolean {
+  const userString = localStorage.getItem("user");
+  return !!userString;
+}
+
+// DB
 export async function getCourse(courseId: string): Promise<Course | null> {
   const courseDocRef = doc(db, "courses", courseId);
   const courseDoc = await getDoc(courseDocRef);
@@ -37,29 +99,37 @@ export async function getCourse(courseId: string): Promise<Course | null> {
   }
 }
 
-export async function getCourses(courseIds: string[]): Promise<Course[] | never[]> {
-  const results = await Promise.allSettled(courseIds.map(async (courseId) => {
-    const courseDocRef = doc(db, "courses", courseId);
-    const courseDoc = await getDoc(courseDocRef);
-    if (courseDoc.exists()) {
-      const data = { ...courseDoc.data() as Course, id: courseId };
-      return data;
-    } else {
-      return null;
-    }
-  })).then((results) => {
-    return results.map((result) => {
-      if (result.status === "fulfilled") {
-        const course = result.value as Course;
-        return course;
+export async function getCourses(
+  courseIds: string[]
+): Promise<Course[] | never[]> {
+  const results = await Promise.allSettled(
+    courseIds.map(async (courseId) => {
+      const courseDocRef = doc(db, "courses", courseId);
+      const courseDoc = await getDoc(courseDocRef);
+      if (courseDoc.exists()) {
+        const data = { ...(courseDoc.data() as Course), id: courseId };
+        return data;
       } else {
         return null;
       }
-    }).filter(course => course && course !== null) as Course[];
-  }).catch((error) => {
-    console.error(error);
-    return [];
-  });
+    })
+  )
+    .then((results) => {
+      return results
+        .map((result) => {
+          if (result.status === "fulfilled") {
+            const course = result.value as Course;
+            return course;
+          } else {
+            return null;
+          }
+        })
+        .filter((course) => course && course !== null) as Course[];
+    })
+    .catch((error) => {
+      console.error(error);
+      return [];
+    });
 
   return results;
 }
@@ -69,12 +139,14 @@ export const enrollInCourse = async (userId: string, courseId: string) => {
   await updateDoc(userCoursesDocRef, {
     courses: arrayUnion(courseId),
   });
-}
+};
 
 /**
  * Returns courses that the user is enrolled in.
  */
-export async function getUserCourses(userId: string): Promise<Course[] | never[]> {
+export async function getUserCourses(
+  userId: string
+): Promise<Course[] | never[]> {
   const userCoursesDocRef = doc(db, "users", userId);
   const userCourseDoc = await getDoc(userCoursesDocRef);
   if (userCourseDoc.exists()) {
@@ -86,7 +158,9 @@ export async function getUserCourses(userId: string): Promise<Course[] | never[]
   }
 }
 
-export async function getForumMessages(forumId: string): Promise<ForumMessage[]> {
+export async function getForumMessages(
+  forumId: string
+): Promise<ForumMessage[]> {
   const forumMessagesDocRef = collection(db, "forums", forumId);
   const forumMessagesDocsSnapshot = await getDocs(forumMessagesDocRef);
   const messages: ForumMessage[] = [];

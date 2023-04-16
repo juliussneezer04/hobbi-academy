@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import LoginButton from "@/components/loginButton";
 import { classNames } from "@/lib/utils";
 import AuthWrapper from "@/components/auth";
 import { Dialog } from "@headlessui/react";
@@ -12,6 +11,7 @@ import {
   XMarkIcon,
 } from "@heroicons/react/24/outline";
 import { CheckIcon } from "@heroicons/react/20/solid";
+import Link from "next/link";
 
 const navigation = [
   { name: "Product", href: "#" },
@@ -131,7 +131,6 @@ export default function Example() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <AuthWrapper>
       <div className="bg-white">
         {/* Header */}
         <header className="absolute inset-x-0 top-0 z-50">
@@ -156,7 +155,11 @@ export default function Example() {
               </button>
             </div>
             <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-              <LoginButton className="text-sm font-semibold leading-6 text-gray-900" />
+              <Link href="/login">
+                <button className="text-sm font-semibold leading-6 text-gray-900">
+                  Log in
+                </button>
+              </Link>
             </div>
           </nav>
           <Dialog
@@ -171,8 +174,8 @@ export default function Example() {
                 <a href="#" className="-m-1.5 p-1.5">
                   <span className="sr-only">Your Company</span>
                   <img
-                    className="h-8 w-auto"
-                    src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+                    className="h-12 w-auto"
+                    src="/hobbiLogo.png"
                     alt=""
                   />
                 </a>
@@ -199,12 +202,12 @@ export default function Example() {
                     ))}
                   </div>
                   <div className="py-6">
-                    <a
-                      href="#"
+                    <Link
+                      href="/login"
                       className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                     >
                       Log in
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -231,7 +234,11 @@ export default function Example() {
               <div className="mx-auto max-w-7xl px-6 lg:px-8">
                 <div className="mx-auto max-w-2xl text-center items-center">
                   <span className="flex flex-row space-x-4 ml-24">
-                    <img src="/hobbiLogo.png" className="h-44 w-auto" alt="Logo" />
+                    <img
+                      src="/hobbiLogo.png"
+                      className="h-44 w-auto"
+                      alt="Logo"
+                    />
                     <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl mt-14">
                       {" "}
                       Academy{" "}
@@ -695,6 +702,5 @@ export default function Example() {
           </footer>
         </div>
       </div>
-    </AuthWrapper>
   );
 }
