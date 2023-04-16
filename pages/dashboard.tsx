@@ -61,7 +61,7 @@ export default function Dashboard(props: { allCourses: Course[] }) {
       id: course.forumId,
       type: "input",
       data: {
-        label: <button onClick={() => router.push(`/courses/course${course.forumId.slice(-1)}`)}>{course.title}</button>,
+        label: <button className="animate-pulse" onClick={() => router.push(`/courses/course${course.forumId.slice(-1)}`)}>{course.title}</button>,
       },
       style: {
         color: "white",
