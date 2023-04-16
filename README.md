@@ -1,40 +1,28 @@
-# Hobbi Academy
+# 🎉 Introducing Hobbi: Your One-Stop Platform to Pick Up Hobbies Conveniently 🎉
 
-*Explore, learn and master new hobbies — without the hassle.*
+*🌟 Discover, learn, and enjoy hobbies in an enriching and fulfilling way without the hassle. 🌟*
 
-## Getting Started
+😩 **Tired of the outdated and inefficient way of picking up hobbies?*
+We've got you covered with Hobbi, the ultimate platform for busy working adults seeking convenience and efficiency.
 
-First, run the development server:
+## 🏆 Why Hobbi? 🏆
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+- 📦 **Starter Kits**: Say goodbye to endless research and expensive equipment. With our curated starter kits, you get everything you need to dive into a new hobby like embroidery, car modeling, and more.
+- 🎓 **Expert-Led Tutorials**: Unlock access to our exclusive Hobbi Academy, where you'll find expert-led tutorial videos to guide you through your chosen hobby.
+- 💬 **Private Forums**: Connect with like-minded individuals in our private forums to share progress, ask questions, and support one another.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🚀 How It Works 🚀
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+1. 🔍 **Choose a Hobby**: Browse our extensive collection of starter kits and pick one that sparks your interest.
+2. 📬 **Receive Your Kit**: Your carefully curated starter kit arrives at your doorstep, providing all the essentials you need to get started.
+3. 🎥 **Access the Academy**: Use the code sent with your kit to log in to our Hobbi Academy and unlock expert-led tutorial videos specific to your chosen hobby.
+4. 🤝 **Join the Community**: Connect with others learning the same hobby in our private forums, making it easy to share your journey and learn from one another.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+## 🎁 Perfect for Various Occasions 🎁
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+- 🧘 **Me-Time**: Treat yourself to some well-deserved relaxation and personal growth by exploring new hobbies on your own.
+- 🎈 **Gifts**: Delight your loved ones with a unique and thoughtful present.
+- ❤️ **Bonding**: Spend quality time learning a new hobby together with friends and family.
+- 👥 **Networking**: Meet new people and expand your social circle with those who share your interests.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+It's time to revolutionize the way we learn and enjoy hobbies. With Hobbi, you can now spend your free time in a more enriching and fulfilling way, without sacrificing convenience or breaking the bank. Discover the world of possibilities with Hobbi today! 🎉🚀
