@@ -5,6 +5,9 @@ import { getUserCourses } from "@/lib/firebase";
 import { Course } from "@/interfaces";
 import { useLocalStorage } from "@/lib/hooks/useUser";
 import { User } from "firebase/auth";
+import { RoomProvider } from "@/liveblocks.config";
+import LiveCursorWrapper from "@/components/liveCursorWrapper";
+import { LiveChatContextProvider } from "@/components/useLiveChatEnabled";
 
 export default function Dashboard() {
   const [userCourses, setUserCourses] = React.useState<Course[]>([]);
@@ -15,15 +18,28 @@ export default function Dashboard() {
       const getUserCourseList = async () => {
         const courses = await getUserCourses(id);
         setUserCourses(courses);
-      }
+      };
       getUserCourseList();
     }
   }, [user]);
   return (
     <DefaultLayout>
-      <div className="flex flex-col items-center">
-        <CourseWeb userCourses={userCourses} />
-      </div>
+      <RoomProvider
+        id="dashboard"
+        initialPresence={{
+          cursor: null,
+          message: "",
+          userId: user?.email ?? "",
+        }}
+      >
+        <LiveChatContextProvider>
+          <LiveCursorWrapper>
+            <div className="flex flex-col items-center">
+              <CourseWeb userCourses={userCourses} />
+            </div>
+          </LiveCursorWrapper>
+        </LiveChatContextProvider>
+      </RoomProvider>
     </DefaultLayout>
   );
 }
