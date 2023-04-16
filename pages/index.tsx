@@ -398,11 +398,6 @@ export default function Example() {
               />
             </div>
             <div className="relative mx-auto max-w-2xl lg:mx-0">
-              <img
-                className="h-12 w-auto"
-                src="https://tailwindui.com/img/logos/workcation-logo-white.svg"
-                alt=""
-              />
               <figure>
                 <blockquote className="mt-6 text-lg font-semibold text-white sm:text-xl sm:leading-8">
                   <p>
@@ -412,7 +407,7 @@ export default function Example() {
                 </blockquote>
                 <figcaption className="mt-6 text-base text-white">
                   <div className="font-semibold">Judith Black</div>
-                  <div className="mt-1">Aspiring film-maker</div>
+                  <div className="mt-1">Lawyer & Aspiring Full-time Knitter</div>
                 </figcaption>
               </figure>
             </div>
