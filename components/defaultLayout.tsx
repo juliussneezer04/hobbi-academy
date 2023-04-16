@@ -14,9 +14,9 @@ import FloatingParticles from "./courseWeb/floatingParticles";
 export default function DefaultLayout({ children }: { children: React.ReactNode}) {
   const router = useRouter();
   const navigation = [
-    { name: "Dashboard 🗺", href: "/dashboard", icon: MapIcon, current: router.pathname === "/dashboard" },
-    { name: "Courses 📖", href: "/courses", icon: BookOpenIcon, current: router.pathname === "/courses" },
-    { name: "Forums 🗞", href: "/forums", icon: ClipboardDocumentListIcon, current: router.pathname === "/forums" },
+    { name: "Dashboard", href: "/dashboard", icon: MapIcon, current: router.pathname === "/dashboard" },
+    { name: "Courses", href: "/courses", icon: BookOpenIcon, current: router.pathname === "/courses" },
+    { name: "Forums", href: "/forums", icon: ClipboardDocumentListIcon, current: router.pathname === "/forums" },
   ];
   const [sidebarOpen, setSidebarOpen] = React.useState(false);
   return (
