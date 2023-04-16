@@ -23,6 +23,20 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   };
 };
 
+const IDX_TO_POSITION: {
+  [key: number]: { x: number; y: number };
+} = {
+  0: { x: 250, y: 200 },
+  1: { x: 300, y: 250 },
+  2: { x: 300, y: 300 },
+  3: { x: 550, y: 550 },
+  4: { x: 550, y: 650 },
+  5: { x: 750, y: 600 },
+  6: { x: 900, y: 200 },
+  7: { x: 850, y: 250 },
+  8: { x: 1100, y: 250 },
+};
+
 
 export default function Dashboard(props: { allCourses: Course[] }) {
   const [userCourses, setUserCourses] = React.useState<Course[]>([]);
@@ -53,10 +67,7 @@ export default function Dashboard(props: { allCourses: Course[] }) {
         color: "white",
         backgroundColor: userColor,
       },
-      position: {
-        x: idx * 50 + 200,
-        y: idx * 50 + 200,
-      },
+      position: IDX_TO_POSITION[idx],
       draggable: true,
     }});
 

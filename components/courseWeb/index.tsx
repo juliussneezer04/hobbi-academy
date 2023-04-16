@@ -56,7 +56,7 @@ export default function CourseWeb(props: CourseWebProps) {
           Your Journey
         </h1>
         <div style={{ width: "100vw", height: "100vh" }}>
-          <ReactFlow nodes={courseNodes} edges={edges} onInit={n => console.log(n.getNodes())}>
+          <ReactFlow defaultNodes={courseNodes} nodes={courseNodes} edges={edges}>
             <MiniMap zoomable pannable />
           </ReactFlow>
         </div>
