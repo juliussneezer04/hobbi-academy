@@ -25,7 +25,7 @@ export default function ForumMessageComponent(props: {
 
   return (
     <div className="bg-white px-4 py-5 sm:px- shadow-md rounded-md">
-      <div className="text-sm flex flex-col space-y-4">
+      <div className="text-sm flex flex-col space-y-4 text-start">
         <div className="flex space-x-3">
           <div className="flex-shrink-0">
             <img
@@ -69,11 +69,11 @@ export default function ForumMessageComponent(props: {
             </Menu>
           </div>
         </div>
-        <p className="text-sm font-normal text-gray-900">
-          <button disabled className="hover:underline">
+        <div className="text-sm text-start font-normal text-gray-900">
+          <button disabled className="hover:underline text-start">
             {message.content}
           </button>
-        </p>
+        </div>
       </div>
     </div>
   );
