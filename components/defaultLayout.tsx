@@ -11,7 +11,7 @@ import FloatingParticles from "./courseWeb/floatingParticles";
 * This is the default layout for all pages.
 * Contains a drawer on the left of all pages
 */
-export default function DefaultLayout({ children }: { children: React.ReactNode}) {
+export default function DefaultLayout({ children, disableParticles }: { children: React.ReactNode; disableParticles?: boolean }) {
   const router = useRouter();
   const navigation = [
     { name: "Dashboard", href: "/dashboard", icon: MapIcon, current: router.pathname === "/dashboard" },
@@ -67,8 +67,8 @@ export default function DefaultLayout({ children }: { children: React.ReactNode}
                   <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-white px-6 pb-2">
                     <div className="flex h-16 shrink-0 items-center">
                       <img
-                        className="h-8 w-auto"
-                        src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+                        className="h-14 w-auto"
+                        src="/hobbiLogo.png"
                         alt="Your Company"
                       />
                     </div>
