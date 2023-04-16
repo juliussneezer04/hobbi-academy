@@ -3,7 +3,6 @@ import { classNames } from "@/lib/utils";
 import { Transition, Dialog } from "@headlessui/react";
 import { XMarkIcon, MapIcon, Bars3Icon, BookOpenIcon, ClipboardDocumentListIcon } from "@heroicons/react/24/outline";
 import { useRouter } from "next/router";
-import LogoutButton from "./logoutButton";
 import AuthWrapper from "./auth";
 
 
@@ -100,9 +99,6 @@ export default function DefaultLayout({ children }: { children: React.ReactNode}
                             ))}
                           </ul>
                         </li>
-                        <li>
-                          <LogoutButton className="group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold text-gray-700 hover:text-indigo-600 hover:bg-gray-50" />
-                        </li> 
                       </ul>
                     </nav>
                   </div>
@@ -128,7 +124,7 @@ export default function DefaultLayout({ children }: { children: React.ReactNode}
           </a>
         </div>
 
-        <main className="py-10 lg:pl-72">
+        <main className="py-10">
           <div className="px-4 sm:px-6 lg:px-8">{children}</div>
         </main>
       </div>
