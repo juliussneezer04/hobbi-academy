@@ -1,4 +1,4 @@
-import { Course, ForumMessage } from "@/interfaces";
+import { Course, ForumDetails, ForumMessage } from "@/interfaces";
 import { initializeApp } from "firebase/app";
 import {
   User,
@@ -150,13 +150,25 @@ export async function getUserCourses(
 
 export async function getForumMessages(
   forumId: string
-): Promise<ForumMessage[]> {
-  const forumMessagesDocRef = collection(db, "forums", forumId);
-  const forumMessagesDocsSnapshot = await getDocs(forumMessagesDocRef);
-  const messages: ForumMessage[] = [];
-  forumMessagesDocsSnapshot.forEach((doc) => {
+): Promise<ForumDetails> {
+  const forumDetailsDocRef = doc(db, "forums", forumId);
+  const forumDetailsDocsSnapshot = await getDoc(forumDetailsDocRef);
+  const forumDetails = forumDetailsDocsSnapshot.data() as { title: string };
+  const forumMessagesDocsSnapshot = collection(
+    db,
+    "forums",
+    forumId,
+    "messages"
+  );
+  const messagesSnapshot = await getDocs(forumMessagesDocsSnapshot);
+  const messages = messagesSnapshot.docs.map((doc) => {
     const data = doc.data() as ForumMessage;
-    messages.push(data);
+    return data;
   });
-  return messages;
+
+  return {
+    ...forumDetails,
+    id: forumId,
+    messages,
+  };
 }

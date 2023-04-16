@@ -15,10 +15,15 @@ export interface CourseUser {
   courses: string[];
 }
 
-export interface ForumMessage {
-  forumId: string;
+export interface ForumDetails {
   id: string;
-  message: string;
-  authorId: string;
-  timestamp: Date;
+  title: string;
+  messages: ForumMessage[];
+}
+
+export interface ForumMessage {
+  id: string;
+  forumId: string;
+  content: string;
+  author: string;
 }
