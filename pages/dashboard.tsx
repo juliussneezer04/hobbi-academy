@@ -4,10 +4,11 @@ import React, { useEffect } from "react";
 import { getUserCourses } from "@/lib/firebase";
 import { Course } from "@/interfaces";
 import { useLocalStorage } from "@/lib/hooks/useUser";
+import { User } from "firebase/auth";
 
 export default function Dashboard() {
   const [userCourses, setUserCourses] = React.useState<Course[]>([]);
-  const [user, setUser] = useLocalStorage("user", {});
+  const [user, setUser] = useLocalStorage<User | null>("user", null);
   useEffect(() => {
     if (user) {
       const id = user.email ?? "";
