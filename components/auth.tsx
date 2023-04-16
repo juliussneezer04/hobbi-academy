@@ -7,6 +7,7 @@ export default function AuthWrapper (props: {children: React.ReactNode }) {
   const router = useRouter();
   useEffect(() => {
     if (!isLoading && !isAuthenticated) {
+      console.log("HEY")
       router.push("/");
     }
   }, [isAuthenticated, isLoading, router])
@@ -17,6 +18,10 @@ export default function AuthWrapper (props: {children: React.ReactNode }) {
       authorizationParams={{
         redirect_uri: process.env.NEXT_PUBLIC_AUTH0_REDIRECT_URI ?? "http://localhost:3000/dashboard",
       }}
+      onRedirectCallback={(appState) => {
+        router.push("/dashboard");
+      }}
+      cacheLocation="localstorage"
     >
       {props.children}
     </Auth0Provider>
