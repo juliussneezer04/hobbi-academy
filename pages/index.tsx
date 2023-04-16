@@ -7,6 +7,7 @@ import {
   Bars2Icon,
 } from "@heroicons/react/24/outline";
 import Link from "next/link";
+import FloatingParticles from "@/components/courseWeb/floatingParticles";
 
 const navigation = [
   { name: "Product", href: "#" },
@@ -121,6 +122,7 @@ export default function Example() {
 
   return (
     <div className="bg-white">
+      <FloatingParticles />
       {/* Header */}
       <header className="absolute inset-x-0 top-0 z-50">
         <nav
@@ -251,7 +253,7 @@ export default function Example() {
               <div className="mt-16 flow-root sm:mt-24">
                 <div className="-m-2 rounded-xl bg-gray-900/5 p-2 ring-1 ring-inset ring-gray-900/10 lg:-m-4 lg:rounded-2xl lg:p-4">
                   <img
-                    src="https://tailwindui.com/img/component-images/project-app-screenshot.png"
+                    src="/dashboard.png"
                     alt="App screenshot"
                     width={2432}
                     height={1442}
